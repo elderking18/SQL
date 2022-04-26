@@ -1,0 +1,18 @@
+CREATE TABLE clothes (id INTEGER PRIMARY KEY, name TEXT, cost INTEGER, quantity INTEGER, aisle INTEGER);
+INSERT INTO clothes VALUES (1, "hats", 5, 12, 1);
+insert into clothes values (2, "short-sleeve shirt", 10, 25, 2);
+insert into clothes values (3, "long-sleeve shirt", 12, 30, 3);
+insert into clothes values (4, "pants", 20, 50, 4);
+insert into clothes values (5, "belts", 10, 10, 5);
+insert into clothes values (6, "shorts", 20, 25, 6);
+insert into clothes values (7, "boxers", 5, 55, 7);
+insert into clothes values (8, "briefs", 5, 70, 8);
+insert into clothes values (9, "socks", 5, 22, 9);
+insert into clothes values (10, "tennis shoes", 50, 100, 10);
+insert into clothes values (11, "dress shoes", 70, 30, 11);
+insert into clothes values (12, "boots", 60, 65, 12);
+insert into clothes values (13, "high-heels", 100, 20, 13);
+insert into clothes values (14, "flip-flops", 15, 60, 14);
+insert into clothes values (15, "sandals", 15, 30, 15);
+select cost from clothes order by cost;
+select sum(quantity) from clothes group by aisle;
