@@ -1,0 +1,10 @@
+CREATE TABLE famous_people (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, occupation TEXT);
+INSERT INTO famous_people (name, occupation) VALUES ('Johnny Depp', 'Actor'), ('Tom Hanks', 'Actor'), ('Anne Hathaway', 'Actress'), ('Morgan Freeman', 'Actor'), ('Scarlett Johansson', 'Actress');
+
+CREATE TABLE movies (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, starring TEXT);
+INSERT INTO movies (title, starring) VALUES ('Pirates of the Carribean', 'Johnny Depp'), ('Edward Scissorhands', 'Johnny Depp'), ('The Avengers', 'Scarlett Johansson'), ('Forrest Gump', 'Tom Hanks'), ('Big', 'Tom Hanks'), ('Shawshank Redemption', 'Morgan Freeman'), ('Driving Miss Daisy', 'Morgan Freeman'), ('Bruce Almighty', 'Morgan Freeman'), ('The Princess Diaries', 'Anne Hathaway'), ('Les Miserables', 'Anne Hathaway');
+
+Select movies.title AS Title, famous_people.name AS Starring From movies
+    Join famous_people
+    on movies.starring = famous_people.name
+    Group by Title;
