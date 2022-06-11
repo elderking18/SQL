@@ -1,0 +1,36 @@
+Select * From BIT_DB.JanSales;
+
+
+Select Count(orderID) 
+From BIT_DB.JanSales;
+
+
+Select Count(orderID) 
+From BIT_DB.JanSales
+Where Product = 'iPhone';
+
+
+Select acctnum 
+From BIT_DB.customers cust
+Inner Join BIT_DB.FebSales Feb
+On cust.order_id = Feb.orderID;
+
+
+Select distinct Product, price 
+From BIT_DB.JanSales
+Order By price ASC Limit 1;
+
+Select Sum(Quantity) * price as revenue, Product
+From BIT_DB.JanSales
+Group by Product;
+
+Select Product, Quantity, Sum(Quantity) * price as revenue
+From BIT_DB.FebSales
+Where location = '548 Lincoln St, Seattle, WA 98101'
+Group By Product;
+
+Select Count(cust.acctnum), Avg(Quantity) * price
+From BIT_DB.Febsales Feb
+Left Join BIT_DB.customers cust
+On Feb.orderID = cust.order_id
+Where Feb.Quantity > 2;
