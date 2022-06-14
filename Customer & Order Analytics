@@ -1,36 +1,45 @@
-Select * From BIT_DB.JanSales;
+#In this SQL, I'm querying a database with multiple tables in it to quantify statistics about customer and order data. 
 
-
+#1. How many orders were placed in January? 
 Select Count(orderID) 
 From BIT_DB.JanSales;
 
-
+#2. How many of those orders were for an iPhone? 
 Select Count(orderID) 
 From BIT_DB.JanSales
 Where Product = 'iPhone';
 
-
+#3. Select the customer account numbers for all the orders that were placed in February. 
 Select acctnum 
 From BIT_DB.customers cust
 Inner Join BIT_DB.FebSales Feb
 On cust.order_id = Feb.orderID;
 
-
+#4. Which product was the cheapest one sold in January, and what was the price?
 Select distinct Product, price 
 From BIT_DB.JanSales
 Order By price ASC Limit 1;
 
+#5. What is the total revenue for each product sold in January?
 Select Sum(Quantity) * price as revenue, Product
 From BIT_DB.JanSales
 Group by Product;
 
+#6. Which products were sold in February at 548 Lincoln St, Seattle, WA 98101, how many of each were sold, and what was the total revenue?
 Select Product, Quantity, Sum(Quantity) * price as revenue
 From BIT_DB.FebSales
 Where location = '548 Lincoln St, Seattle, WA 98101'
 Group By Product;
 
+#7. How many customers ordered more than 2 products at a time, and what was the average amount spent for those customers? 
 Select Count(cust.acctnum), Avg(Quantity) * price
 From BIT_DB.Febsales Feb
 Left Join BIT_DB.customers cust
 On Feb.orderID = cust.order_id
 Where Feb.Quantity > 2;
+
+#8. List all the products sold in Los Angeles in February, and include how many of each were sold.
+Select Product, sum(Quantity)
+From BIT_DB.FebSales
+Where location like '%Los Angeles%'
+Group by Product;
