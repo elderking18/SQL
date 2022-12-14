@@ -1,3 +1,5 @@
+###In this project I took a table of Pokemon and their statistics and ran a few queries to determine certain things like who was the strongest, who had the most hp, etc.
+
 CREATE TABLE pokemon(
   Number     INTEGER,
   Name       TEXT PRIMARY KEY,
